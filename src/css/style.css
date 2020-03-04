@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,15 +9,7 @@ body {
   font: 16px sans-serif;
   height: 100vh;
   background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 5%,
-    rgba(93, 9, 121, 1) 100%,
-    rgba(0, 212, 255, 1) 100%,
-    rgba(93, 10, 122, 1) 100%,
-    rgba(0, 212, 255, 1) 100%,
-    rgba(90, 16, 126, 1) 100%
-  );
+  background: rgb(58, 58, 58);
   color: #fff;
 }
 
