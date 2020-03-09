@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.repos-info li {
+  padding: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.repos,
+.starred {
+  float: left;
+  width: 100%;
+}
+
+.repos li,
+.starred li {
+  padding: 12px 2%;
+}
+
+.repos li + li,
+.starred li + li {
+  border-top: 1px solid #ccc;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}

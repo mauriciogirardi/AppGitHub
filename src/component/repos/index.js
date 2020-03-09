@@ -1,8 +1,8 @@
-"use strict";
 import React, { PropTypes } from "react";
+import s from "./repos.css";
 
 const Repos = ({ className, title, repos }) => (
-  <div className={className}>
+  <div className={className} className={s.repos}>
     <h2>{title}</h2>
     <ul>
       {repos.map((repo, index) => (

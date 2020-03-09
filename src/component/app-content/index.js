@@ -1,9 +1,10 @@
-"use strict";
 import React, { PropTypes } from "react";
-import Search from "./search";
-import UserInfo from "./user-info";
-import Actions from "./actions";
-import Repos from "./repos";
+import Search from "../search";
+import UserInfo from "../use-info";
+import Actions from "../actions";
+import Repos from "../repos";
+
+import s from "./app_content.css";
 
 const AppContent = ({
   userinfo,
@@ -14,7 +15,7 @@ const AppContent = ({
   getRepos,
   getStarred
 }) => (
-  <div className="app">
+  <div className={s.app_content}>
     <Search isDisabled={isFetching} handleSearch={handleSearch} />
 
     {isFetching && <div> Carregando.....</div>}

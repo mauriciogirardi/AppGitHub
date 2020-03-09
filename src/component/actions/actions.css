@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2%;
+}
+
+.actions button {
+  font-size: 20px;
+  font-weight: 700;
+  height: 50px;
+  text-transform: uppercase;
+  width: 48%;
+  cursor: pointer;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  background-color: rgb(235, 69, 9);
+  outline: none;
+}
