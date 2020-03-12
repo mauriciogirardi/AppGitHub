@@ -1,8 +1,8 @@
 import React, { PropTypes } from "react";
-import Search from "../search";
-import UserInfo from "../use-info";
-import Actions from "../actions";
-import Repos from "../repos";
+import Search from "components/search";
+import UserInfo from "components/use-info";
+import Actions from "components/actions";
+import Repos from "components/repos";
 
 import s from "./app_content.css";
 
