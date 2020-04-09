@@ -28,9 +28,11 @@ const AppContent = ({
       <Repos className="repos" title="Repositórios:" repos={repos} />
     )}
 
-    {!!starred.length && (
-      <Repos className="starred" title="Favoritos:" repos={starred} />
-    )}
+    <div className={s.reposContainer}>
+      {!!starred.length && (
+        <Repos className="starred" title="Favoritos:" repos={starred} />
+      )}
+    </div>
   </div>
 );
 

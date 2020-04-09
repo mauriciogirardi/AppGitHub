@@ -1,32 +1,27 @@
-@charset "UTF-8";
+.reposContainer {
+  width: 45%;
+  float: left;
+  padding: 20px;
+  margin-left: 50px;
+}
 
-.repos-info li {
-  padding: 5px;
+li {
+  text-transform: uppercase;
 }
 
 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.repos,
-.starred {
-  float: left;
-  width: 100%;
-}
-
-.repos li,
-.starred li {
-  padding: 12px 2%;
-}
-
-.repos li + li,
-.starred li + li {
-  border-top: 1px solid #ccc;
+  list-style-type: none;
 }
 
 a {
-  color: rgb(119, 117, 117);
+  color: white;
   text-decoration: none;
+
+  display: block;
+  padding: 5px 3px;
+}
+
+a:hover {
+  background-color: #a1a1a1;
+  color: orangered;
 }

@@ -1,12 +1,6 @@
+const common = require("../webpack/common");
 module.exports = {
   module: {
-    loaders: [
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        include: /src/,
-        loaders: ["style", "css?modules"]
-      }
-    ]
+    loaders: [common.cssLoader]
   }
 };
