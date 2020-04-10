@@ -12,10 +12,11 @@ const AppContent = ({
   starred,
   isFetching,
   handleSearch,
+  handlePagination,
   getRepos,
-  getStarred
+  getStarred,
 }) => (
-  <div className={s.app_content}>
+  <div className={s.container}>
     <Search isDisabled={isFetching} handleSearch={handleSearch} />
 
     {isFetching && <div> Carregando.....</div>}
@@ -24,26 +25,39 @@ const AppContent = ({
 
     {!!userinfo && <Actions getRepos={getRepos} getStarred={getStarred} />}
 
-    {!!repos.length && (
-      <Repos className="repos" title="Repositórios:" repos={repos} />
+    {!!repos.repos.length && (
+      <Repos
+        className="repos"
+        title="Repositórios:"
+        repos={repos}
+        handlePagination={(cliked) => handlePagination("repos", cliked)}
+      />
     )}
-
-    <div className={s.reposContainer}>
-      {!!starred.length && (
-        <Repos className="starred" title="Favoritos:" repos={starred} />
-      )}
-    </div>
+    {!!starred.repos.length && (
+      <Repos
+        className="starred"
+        title="Favoritos:"
+        repos={starred}
+        handlePagination={(cliked) => handlePagination("starred", cliked)}
+      />
+    )}
   </div>
 );
 
+const reposPropTypesShape = {
+  repos: PropTypes.array.isRequired,
+  pagination: PropTypes.object,
+};
+
 AppContent.propTypes = {
   userinfo: PropTypes.object,
-  repos: PropTypes.array.isRequired,
-  starred: PropTypes.array.isRequired,
+  repos: PropTypes.shape(reposPropTypesShape).isRequired,
+  starred: PropTypes.shape(reposPropTypesShape).isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleSearch: PropTypes.func.isRequired,
+  handlePagination: PropTypes.func.isRequired,
   getRepos: PropTypes.func.isRequired,
-  getStarred: PropTypes.func.isRequired
+  getStarred: PropTypes.func.isRequired,
 };
 
 export default AppContent;

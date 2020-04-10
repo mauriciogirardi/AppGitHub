@@ -3,22 +3,33 @@ import React, { Component } from "react";
 import AppContent from "components/app-content";
 import ajax from "@fdaciuk/ajax";
 
+const initialReposState = {
+  repos: [],
+  pagination: {
+    total: 1,
+    activePage: 1,
+  },
+};
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       userinfo: null,
-      repos: [],
-      starred: [],
-      isFetching: false
+      repos: initialReposState,
+      starred: initialReposState,
+      isFetching: false,
     };
+
+    this.perPage = 5;
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  getGitHubApiUrl(username, type) {
+  getGitHubApiUrl(username, type, page = 1) {
     const internalUser = username ? `/${username}` : "";
     const internalType = type ? `/${type}` : "";
 
-    return `https://api.github.com/users${internalUser}${internalType}`;
+    return `https://api.github.com/users${internalUser}${internalType}?per_page=${this.perPage}&page=${page}`;
   }
 
   handleSearch(e) {
@@ -30,7 +41,7 @@ class App extends Component {
       this.setState({ isFetching: true });
       ajax()
         .get(this.getGitHubApiUrl(value))
-        .then(result => {
+        .then((result) => {
           this.setState({
             userinfo: {
               username: result.name,
@@ -38,27 +49,38 @@ class App extends Component {
               login: result.login,
               repos: result.public_repos,
               followers: result.followers,
-              following: result.following
+              following: result.following,
             },
-            repos: [],
-            starred: []
+            repos: initialReposState,
+            starred: initialReposState,
           });
         })
         .always(() => this.setState({ isFetching: false }));
     }
   }
 
-  getRepos(type) {
-    return e => {
+  getRepos(type, page) {
+    return (e) => {
       const username = this.state.userinfo.login;
       ajax()
-        .get(this.getGitHubApiUrl(username, type))
-        .then(result => {
+        .get(this.getGitHubApiUrl(username, type, page))
+        .then((result, xhr) => {
+          const linkHeader = xhr.getResponseHeader("link") || "";
+          const totalPagesMatch = linkHeader.match(/&page=(\d+)>; rel="last/);
+
           this.setState({
-            [type]: result.map(repo => ({
-              name: repo.name,
-              link: repo.html_url
-            }))
+            [type]: {
+              repos: result.map((repo) => ({
+                name: repo.name,
+                link: repo.html_url,
+              })),
+              pagination: {
+                total: totalPagesMatch
+                  ? +totalPagesMatch[1]
+                  : this.state[type].pagination.total,
+                activePage: page,
+              },
+            },
           });
         });
     };
@@ -71,7 +93,8 @@ class App extends Component {
         repos={this.state.repos}
         starred={this.state.starred}
         isFetching={this.state.isFetching}
-        handleSearch={e => this.handleSearch(e)}
+        handleSearch={(e) => this.handleSearch(e)}
+        handlePagination={(type, page) => this.getRepos(type, page)()}
         getRepos={this.getRepos("repos")}
         getStarred={this.getRepos("starred")}
       />

@@ -8,7 +8,10 @@
 body {
   font: 16px sans-serif;
   height: 100vh;
-  background: rgb(2, 0, 36);
   background: rgb(85, 85, 85);
   color: #fff;
+}
+
+.container {
+  border: 1px solid red;
 }

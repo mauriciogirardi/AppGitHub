@@ -7,9 +7,12 @@ import s from "./pagination.css";
 const Pagination = ({ total, activePage, pageLink, onClick }) => (
   <ul className={s.pagination}>
     {pagination({ total, activePage }).map((page, index) => (
-      <li key={index} className={s.paginationItem}>
+      <li
+        style={activePage === page ? { background: "rgb(46, 45, 45)" } : null}
+        className={s.pagination_link}
+        key={index}
+      >
         <Page
-          className={s.pagination_link}
           page={page}
           pageLink={pageLink.replace("%page%", page)}
           onClick={onClick}
@@ -21,14 +24,14 @@ const Pagination = ({ total, activePage, pageLink, onClick }) => (
 
 Pagination.defaultProps = {
   pageLink: "",
-  activePage: 1
+  activePage: 1,
 };
 
 Pagination.propTypes = {
   total: PropTypes.number,
   activePage: PropTypes.number,
   pageLink: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default Pagination;

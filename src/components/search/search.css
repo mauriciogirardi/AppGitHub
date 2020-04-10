@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .search {
-  margin: 50px 0;
+  margin: 10px 0;
   text-align: center;
 }
 
@@ -12,5 +12,6 @@
   border: none;
   border-radius: 30px;
   outline: none;
+  margin-bottom: 70px;
   text-align: center;
 }

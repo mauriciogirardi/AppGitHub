@@ -13,15 +13,14 @@ ul {
   list-style-type: none;
 }
 
-a {
+.reposContainer .repoA {
   color: white;
   text-decoration: none;
-
   display: block;
   padding: 5px 3px;
 }
 
-a:hover {
+.reposContainer .repoA:hover {
   background-color: #a1a1a1;
   color: orangered;
 }

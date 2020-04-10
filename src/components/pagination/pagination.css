@@ -1,6 +1,7 @@
 .pagination {
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
 }
 
@@ -9,18 +10,17 @@
   border: 1px solid #333;
   color: inherit;
   display: flex;
-  height: 50px;
+  height: 40px;
   justify-content: center;
-  min-width: 50px;
-  text-decoration: none;
-  width: 50px;
+  min-width: 40px;
+  width: 40px;
 }
 
 .paginationItem:not(:first-child) .pagination_link {
   border: 0;
 }
 
-.paginationItem.active .pagination_link {
-  background: #333;
+.pageA {
   color: #fff;
+  text-decoration: none;
 }

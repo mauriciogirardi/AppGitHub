@@ -1,7 +1,12 @@
-h2,
-h1,
-h3 {
+h2 {
   color: rgb(223, 110, 69);
   margin-bottom: 1rem;
   padding: 0 2%;
+  font-style: italic;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
 }

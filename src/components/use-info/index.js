@@ -5,17 +5,23 @@ const UserInfo = ({ userinfo }) => (
   <div className={s.user_info}>
     <img src={userinfo.photo} />
 
-    <h1>
-      <a href={`https://github.com/${userinfo.login}`} target="blank">
-        {userinfo.username}
-      </a>
-    </h1>
+    <div className={s.repoFollowersFollowing}>
+      <h1>
+        <a
+          className={s.nameUser}
+          href={`https://github.com/${userinfo.login}`}
+          target="blank"
+        >
+          {userinfo.username}
+        </a>
+      </h1>
 
-    <ul className="repos-info">
-      <li>- Repositórios: {userinfo.repos}</li>
-      <li>- Seguidores: {userinfo.followers}</li>
-      <li>- Seguindo: {userinfo.following} </li>
-    </ul>
+      <ul>
+        <li className={s.resFoll}>- Repositórios: {userinfo.repos}</li>
+        <li className={s.resFoll}>- Seguidores: {userinfo.followers}</li>
+        <li className={s.resFoll}>- Seguindo: {userinfo.following} </li>
+      </ul>
+    </div>
   </div>
 );
 
@@ -26,8 +32,8 @@ UserInfo.propTypes = {
     login: PropTypes.string.isRequired,
     repos: PropTypes.number.isRequired,
     followers: PropTypes.number.isRequired,
-    following: PropTypes.number.isRequired
-  })
+    following: PropTypes.number.isRequired,
+  }),
 };
 
 export default UserInfo;
